@@ -9,6 +9,10 @@ declare module NetParams {
   interface AuthUserRegister {
     /** 用户名 */
     username: string;
+      /** 学号 */
+      student_id: string;
+      /** 统一验证密码 */
+      oauth: string;
     /** 密码 */
     password: string;
   }
