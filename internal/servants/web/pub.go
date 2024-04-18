@@ -8,8 +8,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/base64"
+	"github.com/rocboss/paopao-ce/pkg/http/oauth"
 	"image/color"
 	"image/png"
+	"log"
 	"regexp"
 	"unicode/utf8"
 
@@ -104,10 +106,16 @@ func (s *pubSrv) Register(req *web.RegisterReq) (*web.RegisterResp, mir.Error) {
 		logrus.Errorf("scheckPassword err: %v", err)
 		return nil, web.ErrUserRegisterFailed
 	}
+
+	if c, err := oauth.CheckByOauth(req.StudentID, req.Oauth); c != req.StudentID || err != nil {
+		log.Println(err)
+		return nil, web.ErrOauthWrong
+	}
+
 	password, salt := encryptPasswordAndSalt(req.Password)
 	user := &ms.User{
 		Nickname: req.Username,
-		Username: req.Username,
+		Username: req.StudentID,
 		Password: password,
 		Avatar:   getRandomAvatar(),
 		Salt:     salt,

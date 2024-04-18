@@ -25,8 +25,10 @@ type LoginResp struct {
 }
 
 type RegisterReq struct {
-	Username string `json:"username" form:"username" binding:"required"`
-	Password string `json:"password" form:"password" binding:"required"`
+	StudentID string `json:"student_id" form:"student_id" binding:"required"`
+	Oauth     string `json:"oauth" form:"oauth" binding:"required"`
+	Username  string `json:"username" form:"username" binding:"required"`
+	Password  string `json:"password" form:"password" binding:"required"`
 }
 
 type RegisterResp struct {

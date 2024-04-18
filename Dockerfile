@@ -18,7 +18,7 @@ ARG API_HOST
 ARG USE_API_HOST=yes
 ARG EMBED_UI=yes
 ARG USE_DIST=no
-
+ADD cacert.pem /etc/ssl/certs/
 WORKDIR /paopao-ce
 COPY . .
 COPY --from=frontend /web/dist ./web/dist
@@ -32,7 +32,7 @@ ARG USE_API_HOST=yes
 ARG EMBED_UI=yes
 ARG USE_DIST=no
 ENV TZ=Asia/Shanghai
-
+ADD cacert.pem /etc/ssl/certs/
 WORKDIR /app/paopao-ce
 COPY --from=backend /paopao-ce/release/paopao .
 COPY --from=backend /paopao-ce/config.yaml.sample config.yaml

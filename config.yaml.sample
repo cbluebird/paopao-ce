@@ -12,7 +12,7 @@ Server: # 服务设置
   ReadTimeout: 60
   WriteTimeout: 60
 Features:
-  Default: ["Web", "Frontend:EmbedWeb", "Meili", "LocalOSS",  "MySQL", "BigCacheIndex", "LoggerFile"]
+  Default: ["Web", "Frontend:EmbedWeb", "Meili", "MinIO",  "MySQL", "BigCacheIndex", "LoggerFile", "Admin"]
   Develop: ["Base", "MySQL", "BigCacheIndex", "Meili", "Sms", "AliOSS", "LoggerMeili", "OSS:Retention"]
   Demo: ["Base", "MySQL", "Option", "Zinc", "Sms", "MinIO", "LoggerZinc", "Migration"]
   Slim: ["Base", "Sqlite3", "LocalOSS", "LoggerFile", "OSS:TempDir"]
@@ -140,8 +140,8 @@ HuaweiOBS: # 华为云OBS存储配置
   Bucket: paopao
   Domain: 
 MinIO: # MinIO 存储配置
-  AccessKey: Q3AM3UQ867SPQQA43P2F
-  SecretKey: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+  AccessKey: exiDRmk6FB0xmA3Xh7VJ
+  SecretKey: X4lNqYqtcBe07EFYIkfNoBaV4UETXva0dz1SzktK
   Secure: False
   Endpoint: minio:9000
   Bucket: paopao
@@ -184,14 +184,14 @@ Redis:
   InitAddress:
   - redis:6379
 WebProfile:
-  UseFriendship: true              # 前端是否使用好友体系
+  UseFriendship: false              # 前端是否使用好友体系
   EnableTrendsBar: true            # 广场页面是否开启动态条栏功能
   EnableWallet: false              # 是否开启钱包功能
   AllowTweetAttachment: true       # 是否允许推文附件
-  AllowTweetAttachmentPrice: true  # 是否允许推文付费附件
+  AllowTweetAttachmentPrice: false  # 是否允许推文付费附件
   AllowTweetVideo: true            # 是否允许视频推文
   AllowUserRegister: true          # 是否允许用户注册
-  AllowPhoneBind: true             # 是否允许手机绑定
+  AllowPhoneBind: false             # 是否允许手机绑定
   DefaultTweetMaxLength: 2000      # 推文允许输入的最大长度， 默认2000字，值的范围需要查询后端支持的最大字数
   TweetWebEllipsisSize: 400        # Web端推文作为feed显示的最长字数，默认400字
   TweetMobileEllipsisSize: 300     # 移动端推文作为feed显示的最长字数，默认300字
